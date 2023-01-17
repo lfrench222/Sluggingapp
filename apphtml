@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Python Embedded in HTML</title>
+</head>
+<body>
+  <form>
+    <label for="bats">Number of AB's:</label>
+    <input type="text" id="bats" name="bats"><br><br>
+    <label for="singles">Number of Singles:</label>
+    <input type="text" id="singles" name="singles"><br><br>
+    <label for="dub">Number of Doubles:</label>
+    <input type="text" id="dub" name="dub"><br><br>
+    <label for="trip">Number of Triples:</label>
+    <input type="text" id="trip" name="trip"><br><br>
+    <label for="hr">Number of Home Runs:</label>
+    <input type="text" id="hr" name="hr"><br><br>
+    <button type="button" onclick="calculate()">Calculate</button>
+  </form>
+  <br>
+  <div id="output"></div>
+  
+  <script>
+    function calculate() {
+      var bats = document.getElementById("bats").value;
+      var singles = document.getElementById("singles").value;
+      var dub = document.getElementById("dub").value;
+      var trip = document.getElementById("trip").value;
+      var hr = document.getElementById("hr").value;
+      
+      //Number of Bases
+      var totalbases = (parseInt(singles) + (parseInt(dub)*2) + (parseInt(trip)*3) + (parseInt(hr)*4));
+      var SLG = (totalbases) / parseInt(bats);
+      var Percent = SLG;
+      
+      //outputs
+      document.getElementById("output").innerHTML = "SLG % : " + round(Percent,3) + " with " + dub + " Doubles " + trip + " Triples and " + hr + " Home Runs with " + bats + " at-bats.";
+    }
+  </script>
+</body>
+</html>
